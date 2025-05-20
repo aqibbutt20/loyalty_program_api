@@ -31,7 +31,6 @@ class RewardIssuanceService
     return false unless first_transaction
 
     days_since_first_transaction = (Time.current - first_transaction.occurred_at) / 1.day
-    days_since_first_transaction <= 60 && 
-      @user.transactions.sum(:amount) > 1000
+    days_since_first_transaction <= 60 && @user.transactions.sum(:amount) > 1000
   end
 end

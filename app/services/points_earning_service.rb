@@ -6,7 +6,7 @@ class PointsEarningService
   end
 
   def call
-    base_points = (@transaction.amount / 100).floor * STANDARD_RATE
+    base_points = (@transaction.amount * STANDARD_RATE / 100).round
     foreign_country? ? base_points * 2 : base_points
   end
 
