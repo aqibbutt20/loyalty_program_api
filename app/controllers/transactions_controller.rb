@@ -1,20 +1,15 @@
 class TransactionsController < ApplicationController
-  def index
-    user = User.find(params[:user_id])
-    render json: user.transactions
-  end
-
   def create
     user = User.find(params[:user_id])
-    transaction = user.transactions.build(transaction_params)
+    transaction = user.transactions.new(transaction_params)
 
     if transaction.save
-      render json: {
+      render json: { 
         transaction: transaction,
         earned_points: transaction.earned_points
       }, status: :created
     else
-      render json: { errors: transaction.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: transaction.errors }, status: :unprocessable_entity
     end
   end
 
