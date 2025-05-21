@@ -4,7 +4,7 @@ A Rails-based API for managing customer loyalty points and rewards.
 
 ## Setup
 
-1. **Requirements**: Ruby 3.3.3, PostgreSQL, Rails 7.1
+1. Requirements: Ruby 3.3.3, PostgreSQL, Rails 7.1
 2. Install dependencies: `bundle install`
 3. Setup database: `rails db:create db:migrate db:seed`
 4. Run the server: `rails s`
@@ -40,15 +40,14 @@ GET /users/:user_id/rewards
 Run the full suite with:
 
 ```
-bundle exec rspec
+bundle exec rspec spec
 ```
 
-### Future Considerations
+### Future Support
 
-The foundation supports easy addition of:
-- Tiered loyalty levels (Gold/Platinum)
 - Point expiration logic
 - Quarterly bonus points
 - Custom reward rules
+- Frontend/UI
 
 Authentication uses simple API key auth (X-API-Key header), ready for extension to JWT if needed.
