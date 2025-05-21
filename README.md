@@ -1,24 +1,54 @@
-# README
+# Loyalty Program API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Rails-based API for managing customer loyalty points and rewards.
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+1. **Requirements**: Ruby 3.3.3, PostgreSQL, Rails 7.1
+2. Install dependencies: `bundle install`
+3. Setup database: `rails db:create db:migrate db:seed`
+4. Run the server: `rails s`
 
-* System dependencies
+## Key Features
 
-* Configuration
+- **Points Calculation**:
+  - 10 points per $100 spent
+  - 2x points for foreign transactions
 
-* Database creation
+- **Automatic Rewards**:
+  - Free Coffee when reaching 100+ points/month
+  - Birthday month Free Coffee
+  - Free Movie Tickets for new users spending >$1000 in 60 days
 
-* Database initialization
+## API Usage
 
-* How to run the test suite
+```bash
+# Create user
+POST /users
+{ "user": { "name": "Test User", "email": "test@example.com", "birthday": "YYYY-MM-DD" } }
 
-* Services (job queues, cache servers, search engines, etc.)
+# Create transaction
+POST /users/:user_id/transactions
+{ "transaction": { "amount": 150, "country": "US", "occurred_at": "ISO8601" } }
 
-* Deployment instructions
+# View rewards
+GET /users/:user_id/rewards
+```
 
-* ...
+## Testing
+
+Run the full suite with:
+
+```
+bundle exec rspec
+```
+
+### Future Considerations
+
+The foundation supports easy addition of:
+- Tiered loyalty levels (Gold/Platinum)
+- Point expiration logic
+- Quarterly bonus points
+- Custom reward rules
+
+Authentication uses simple API key auth (X-API-Key header), ready for extension to JWT if needed.
