@@ -26,7 +26,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_20_154929) do
   create_table "transactions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.decimal "amount", precision: 10, scale: 2, null: false
-    t.string "country", null: false
+    t.string "country", default: "US", null: false
     t.datetime "occurred_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

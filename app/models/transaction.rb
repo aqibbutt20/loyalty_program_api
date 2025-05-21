@@ -1,5 +1,6 @@
 class Transaction < ApplicationRecord
   belongs_to :user
+
   after_create :issue_rewards_if_eligible
 
   validates :amount, :country, :occurred_at, presence: true
